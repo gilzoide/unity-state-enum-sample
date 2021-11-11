@@ -23,7 +23,19 @@ public class StateSO : ScriptableObject
         }
     }
 
-    public Action<State> OnStateChanged;
+    [SerializeField] bool _flag;
+    public bool Flag
+    {
+        get => _flag;
+        set
+        {
+            _flag = value;
+            OnFlagChanged?.Invoke(value);
+        }
+    }
+
+    public event Action<State> OnStateChanged;
+    public event Action<bool> OnFlagChanged;
 
     public void SetStateFromInt(int i)
     {
@@ -34,5 +46,6 @@ public class StateSO : ScriptableObject
     void OnValidate()
     {
         OnStateChanged?.Invoke(_currentState);
+        OnFlagChanged?.Invoke(_flag);
     }
 }

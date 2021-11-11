@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SomeStateSO
   m_EditorClassIdentifier: 
   _currentState: 0
+  _flag: 1
